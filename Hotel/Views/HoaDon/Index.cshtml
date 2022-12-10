@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Hotel.Models.hoadon>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.phuongthucthanhtoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trangthaihd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tongtien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datphong.ID_DP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.phuongthucthanhtoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangthaihd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tongtien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datphong.ID_DP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_HD }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_HD }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_HD })
+        </td>
+    </tr>
+}
+
+</table>

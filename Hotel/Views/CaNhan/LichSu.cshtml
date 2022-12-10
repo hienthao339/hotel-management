@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "LichSu";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+}
+
+@using Hotel.Models.ViewModels
+@model List<lichsuView>
+
+
+
+
+<div class="wrap-lich-su">
+    @if (@Model.Count > 0)
+    {
+        foreach (lichsuView lsv in @Model)
+        {
+            <div class="m-5 w-25 bg-light mx-auto" style="border-radius: 20px">
+                <div >
+                    <div class="d-flex flex-row justify-content-between">
+                        <b class="fw-bold" style="margin-right: 1em">Tên phòng</b>
+                        <span>@lsv.tenphong</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <b class="fw-bold" style="margin-right: 1em">Ngày đặt</b>
+                        <span>@lsv.ngaydat</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <b class="fw-bold" style="margin-right: 1em">Ngày đến</b>
+                        <span>@lsv.ngayden</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <b class="fw-bold" style="margin-right: 1em">Ngày đi</b>
+                        <span>@lsv.ngaydi</span>
+                    </div>
+                    <div class="d-flex flex-row justify-content-between">
+                        <b class="fw-bold" style="margin-right: 1em">Tổng tiền</b>
+                        <span>@lsv.tongtien.000 đ/ngày</span>
+                    </div>
+                </div>
+                @if (lsv.cothehuy == true)
+                {
+                    @Html.ActionLink("Hủy đặt phòng", "XoaDatPhong", "CaNhan", new { ID = lsv.ID_DP }, new { @type = "button", @style = "padding: 10px ;", @class = "btn btn-dark btn-sm mt-3 fw-bold w-100", @OnClick = "return confirm('Bạn có chắc sẽ xóa " + @Html.DisplayFor(modelItem => lsv.ID_DP) + " này không ?');" })
+
+                }
+                else
+                {
+
+                    @lsv.cothehuy
+                    <button class="btn btn-danger" disabled>Quá Hạn Hủy</button>
+                }
+
+            </div>
+            <br />
+        }
+    }
+    else
+    {
+<div class="khung-lich-su w-50 mx-auto m-5 text-center">
+    <h3>Bạn Chưa Đặt Phòng nào!</h3>
+    @Html.ActionLink("Đặt phòng ngay", "DSPhong", "DatPhong", null, new { @type = "button", @style = "padding: 10px ;", @class = "btn btn-dark my-3 btn-sm w-100" })
+</div>
+    }
+</div>

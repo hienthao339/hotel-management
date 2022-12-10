@@ -1,0 +1,58 @@
+﻿@model Hotel.Models.ChiTietDichVu
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Hotel.Models.DBHotelContextEntities dba = new Hotel.Models.DBHotelContextEntities();
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+   
+<div class="form-horizontal">
+    <h4>ChiTietDichVu</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID_CTDV)
+
+    <div class="form-group mt-2">
+        <h5>Tên loại phòng</h5>
+        <div class="my-2">
+            <select class="form-control" name="ID_DV">
+                @foreach (var loai in dba.dichvus.ToList())
+                {
+                    <option value="@loai.ID_DV">@loai.tendv</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <h5>Tên loại phòng</h5>
+        <div class="my-2">
+            <select class="form-control" name="ID_DP">
+                @foreach (var loai in dba.datphongs.ToList())
+                {
+                    <option value="@loai.ID_DP">@loai.phong.tenphong</option>
+                }
+            </select>
+        </div>
+    </div>
+
+
+  
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Trở về danh sách", "DSCTDV", "Admin", new { @type = "button", @style = "padding: 10px ; margin-right: 10px", @class = "btn btn-dark btn-sm" })
+
+</div>

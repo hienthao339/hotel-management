@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "DatPhong";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+    DBHotelContextEntities db = new DBHotelContextEntities();
+
+}
+
+@model Hotel.Models.phong
+@using Hotel.Models
+@using QLKhachSan.Context.ViewModels
+@using (Html.BeginForm("DatPhong", "DatPhong", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID_P)
+    <main class="bg-light">
+        <div class="row booking-now-container m-4">
+            <div class="col-8">
+                <div class="row">
+                    <img class="img-fluid img-rounded" src="~/Assets/Client/@Model.avatar_p" />
+                </div>
+                <div class="row mt-4">
+                    <h2 class="fw-bolder"> @Html.DisplayFor(model => model.tenphong)</h2>
+                    <span class="fw-bold" style="color: #c8c8c8">Được đặt nhiều</span>
+                    <h4 class="fw-bold mt-3">Mô tả</h4>
+                    <p>
+                        @Html.DisplayFor(model => model.loaiphong.mota_p)
+                    </p>
+                </div>
+                <div class="row"></div>
+            </div>
+            <div class="col-4 px-4">
+                <div class="p-4 shadow-sm" style="border: 1px solid #dcdcdc; border-radius: 40px">
+                    <div class="d-flex flex-column fs-4" style="padding-bottom: 1.5em; border-bottom: 1px solid #dcdcdc">
+                        <span class="fs-2 fw-bold">@Html.DisplayFor(model => model.tenphong)</span>
+                        <span class="fw-light">@Html.DisplayFor(model => model.loaiphong.giaphong) VNĐ/ đêm</span>
+                    </div>
+                    <div class="row mb-3">
+                        <span class="mb-1 align-self-start fw-bold">Checkin</span>
+                        <input id="NgayDen" type="date" required class="w-100" name="NgayDen" style="padding:1rem; border-radius: 10px; border: none; opacity: 0.8 " />
+                    </div>
+                    <div class="row mb-3">
+                        <span class="mb-1 align-self-start fw-bold">Checkout</span>
+                        <input id="NgayDi" type="date" required class="w-100" name="NgayDi" style="padding:1rem; border-radius: 10px; border: none; opacity: 0.8 " />
+                    </div>
+                    <script>
+                        var homnay = new Date().toISOString().substring(0, 10);
+                        document.getElementById('NgayDen').value >= homnay;
+                        document.getElementById('NgayDen').min = homnay;
+                    </script>
+                    <!--Dịch vụ-->
+                    <div class="form-group">
+                        <input class="w-100 fw-bold p-3 btn-warning" style="border:none; border-radius: 20px" type="submit" value="Đặt Phòng" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    </main>
+}
+

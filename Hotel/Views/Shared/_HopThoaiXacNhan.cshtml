@@ -1,0 +1,27 @@
+﻿<script>
+    var link;
+    function myFunction(s) {
+        link = s;
+    }
+    function btnOKClick() {
+        window.location = link;
+    }
+</script>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Thông Báo</h4>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa không?</p>
+            </div>
+            <div class="modal-footer">
+                <input type="button" style="width:70px" class="btn btn-success" data-dismiss="modal" value="Có" id="btnOK" onclick="btnOKClick()" />
+                <input type="button" style="width:70px" class="btn btn-default" data-dismiss="modal" value="Không" />
+            </div>
+        </div>
+    </div>
+</div>

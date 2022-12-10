@@ -1,0 +1,79 @@
+﻿@model Hotel.Models.hoadon
+
+@{
+    ViewBag.Title = "ThemHoaDon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Hotel.Models.DBHotelContextEntities dba = new Hotel.Models.DBHotelContextEntities();
+}
+
+<h2>ThemHoaDon</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>hoadon</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group mt-2">
+        <h5>Tên loại phòng</h5>
+        <div class="my-2">
+            <select class="form-control" name="ID_P">
+                @foreach (var loai in dba.datphongs.ToList())
+                {
+                    <option value="@loai.phong.ID_P">@loai.phong.tenphong</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <h5>ID đặt phòng</h5>
+        <div class="my-2">
+            <select class="form-control" name="ID_P">
+                @foreach (var loai in dba.datphongs.ToList())
+                {
+                    <option value="@loai.ID_DP">@loai.ID_DP</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="form-group mt-2">
+        <h5>Tổng tiền</h5>
+        <div class="my-2">
+            <select class="form-control" name="ID_P">
+                @foreach (var loai in dba.datphongs.ToList())
+                {
+                    <option value="@loai.tongtien" id="ID_DP">@loai.tongtien</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.trangthaihd, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.trangthaihd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.trangthaihd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.tongtien, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.tongtien, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tongtien, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

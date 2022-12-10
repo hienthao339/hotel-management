@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "DatPhongThanhCong";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+}
+
+<div class="container dat-phong-thanh-cong w-50 m-auto my-4 shadow-sm text-center py-4">
+    <h5 class="fs-3 fw-bolder text-uppercase text-dark">đặt phòng thành công</h5>
+    <p class="text-secondary" style="margin-bottom: 1.5em">
+        @if (Session["tendn"] != null)
+        {
+            @(((Hotel.Models.nguoidung)Session["tendn"]).hoten)
+        }
+    </p>
+    <div class="row">
+        <img src="~/Assets/Client/room-vip-2.jpg" alt="#" class="img-fluid" />
+    </div>
+    <p class="fs-4 fw-bolder my-4 text-uppercase">@ViewBag.TenPhong</p>
+    <div class="row border-top border-bottom py-2 my-2">
+        <div class="col border-end">
+            <div class="mx-auto fs-5">Địa chỉ</div>
+            <div class="mx-auto fw-lighter">@(((Hotel.Models.nguoidung)Session["tendn"]).diachi)</div>
+        </div>
+        <div class="col">
+            <div class="mx-auto fs-5">Điện thoại</div>
+            <div class="mx-auto fw-lighter">@(((Hotel.Models.nguoidung)Session["tendn"]).sdt)</div>
+        </div>
+    </div>
+    <div class="row border-top border-bottom py-2 my-2">
+        <div class="col border-end">
+            <div class="mx-auto fs-5">Giá phòng</div>
+            <div class="mx-auto fw-lighter">@ViewBag.DonGia</div>
+        </div>
+        <div class="col">
+            <div class="mx-auto fs-5">Số ngày ở</div>
+            <div class="mx-auto fw-lighter">@ViewBag.SoNgayThue</div>
+        </div>
+    </div>
+    <div class="d-flex flex-row justify-content-between fw-bold">
+        <span>Thành tiền</span>
+        <span>@ViewBag.ThanhTien VND</span>
+    </div>
+
+
+    <div class="d-flex flex-column" style="margin-top: 1em">
+        @Html.ActionLink("Xem Phòng khác", "TrangChu", "TrangChu", null, new { @class = "btn btn-outline-dark w-100 p-4 my-3 fs-5" })
+        @Html.ActionLink("Xem Lịch Sử Đặt Phòng", "LichSu", "CaNhan", null, new { @class = "btn btn-dark w-100 p-4 fs-5" })
+        @*<div class="btn btn-dark w-100 p-4 fs-5">Chi tiết</div>*@
+    </div>
+</div>
+
+
+

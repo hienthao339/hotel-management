@@ -1,0 +1,41 @@
+﻿@model Hotel.Models.ChiTietPhuThu
+
+@{
+    ViewBag.Title = "XoaCTPT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>XoaCTPT</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ChiTietPhuThu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.datphong.ID_DP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datphong.ID_DP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phuthu.tenpt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phuthu.tenpt)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

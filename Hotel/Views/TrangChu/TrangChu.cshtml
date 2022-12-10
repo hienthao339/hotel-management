@@ -1,0 +1,385 @@
+﻿
+@{
+    ViewBag.Title = "TrangChu";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+}
+@model List<Hotel.Models.phong>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="~/Assets/Admin/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+    @*<a href="~/Views/TrangChu/TrangChu.cshtml">~/Views/TrangChu/TrangChu.cshtml</a>*@
+    <div>
+        <img class="img-fluid" src="/Assets/Client/hotel-bg-2.jpg" />
+        <div class="p-5 position-absolute bg-dark bg-opacity-50 text-light"
+             style="top: 10em; left: 6em; width: 40em">
+            <span style="font-size: 70px; font-weight: 800">DBA. Hotel </span>
+
+            <p class="w-75 mt-2 mb-5">
+                Lorem ipsum dolor, ntium labore accusamus sequi, adsfw
+                voluptate debitis tenetur in deleniti possimus modi voluptatum.
+                Lorem ipsum dolor, ntium labore accusamus sequi, adsfw.
+            </p>
+            @Html.ActionLink("ĐẶT PHÒNG NGAY", "DSPhong", "DatPhong", null, new { @class = "btn btn-warning border-0 w-50 p-3 fw-bold" })
+        </div>
+    </div>
+
+    <div class="h-75">
+        <div class="w-75 bg-light py-4 position-absolute start-50 translate-middle d-flex flex-row shadow-lg justify-content-around"
+             style="top: 45em; border-radius: 20px">
+            <div class="px-4">
+                <i class="fa-solid fa-wifi"></i>
+                <span>Free-Wifi</span>
+            </div>
+            <div class="px-4">
+                <i class="fa-sharp fa-solid fa-restroom"></i>
+                <span>Phòng nghỉ</span>
+            </div>
+            <div class="px-4">
+                <i class="fa-solid fa-elevator"></i>
+                <span>Thang máy</span>
+            </div>
+            <div class="px-4">
+                <i class="fa-solid fa-hot-tub-person"></i>
+                <span>Bồn tắm</span>
+            </div>
+            <div class="px-4">
+                <i class="fa-solid fa-tv"></i>
+                <span>Tivi HD</span>
+            </div>
+            <div class="px-4">
+                <i class="fa-solid fa-mug-hot"></i>
+                <span>Cafe sáng</span>
+            </div>
+        </div>
+
+        @* danh sách phòng cao cấp *@
+        <div class="d-flex flex-wrap justify-content-around" style="margin-top: 5em">
+            @foreach (var item in Model)
+            {
+                if (item.ID_LP == 4)
+                {
+                    <div class="card w-25 shadow-sm m-3">
+                        <div class="card-img-top">
+                            <img class="img-fluid rounded mx-auto d-block" src="~/Assets/Client/@Html.DisplayFor(modelItem => item.avatar_p)" alt="Responsive image" />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="blockquote"> @Html.DisplayFor(modelItem => item.tenphong)</h5>
+                            <p class="blockquote-footer mt-2">
+                                @Html.DisplayFor(modelItem => item.loaiphong.mota_p)
+                            </p>
+                            <h5 class="text-end"> @Html.DisplayFor(modelItem => item.loaiphong.giaphong) VND</h5>
+                        </div>
+                        <div class="text-center mb-4">
+                            @Html.ActionLink("Xem chi tiết", "DatPhong", "DatPhong", new { ID = item.ID_P }, new { @class = "btn btn-outline-dark" })
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    @* danh sách dịch vụ *@
+    <div class="my-5">
+        <div class="d-flex flex-row">
+            <img class="w-50" src="~/Assets/Client/restaurant.jpg" />
+            <div class="w-50 p-5">
+                <div class="m-auto mt-5">
+                    <h3>Ăn uống</h3>
+                    <p>
+                        Dịch vụ nhà hàng tiện nghi, đa dạng với đầy đủ bữa sáng, trà chiều và cocktail
+                        buổi tối cũng như các món canapés hàng ngày, cùng các thức uống giải khát,
+                        trái cây theo mùa và đồ ăn nhẹ phục vụ suốt cả ngày.
+                    </p>
+                    <h5>Giá dao động: 100000 - 500000 VND</h5>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="w-50 p-5">
+                <div class="m-auto mt-5 text-end">
+                    <h3>Spa</h3>
+                    <p>
+                        Phòng xông hơi tiện nghi với dịch vụ chăm sóc da mặt bằng vitamin C từ cơ bản đến chuyên sâu hoặc bằng than hoạt tính,
+                        điều trị bằng công nghệ IPL, với sự hỗ trợ của hệ thống máy móc – thiết bị tiên tiến cộng với tay nghề của các chuyên gia,
+                        bác sĩ da liễu nên khách hàng trải nghiệm dịch vụ sẽ có được làn da trắng sáng, tươi trẻ.
+                    </p>
+                    <h5>Giá dao động: 300000 - 700000 VND</h5>
+                </div>
+            </div>
+            <img class="w-50" src="~/Assets/Client/spa.jpg" />
+        </div>
+        <div class="d-flex flex-row">
+            <img class="w-50" src="~/Assets/Client/bar.jpg" />
+            <div class="w-50 p-5">
+                <div class="m-auto mt-5">
+                    <h3>Bar</h3>
+                    <p>
+                        Dịch vụ bar, pub hiện đại với khung cảnh 270 độ của đèn neon mang dấu ấn
+                        riêng và tạo nên ấn tượng khó quên, không gian rộng rãi với đủ loại thức uống ngon,
+                        hương vị cocktail tuyệt vời, lẩu trái cây mát lạnh, đồ ăn nhẹ và âm nhạc sôi động.
+                    </p>
+                    <h5>Giá dao động: 400000 - 800000 VND</h5>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row">
+            <div class="w-50 p-5">
+                <div class="m-auto mt-5 text-end">
+                    <h3>Gym</h3>
+                    <p>
+                        Dịch vụ gym phục vụ 24/7 với không gian tập luyện sang trọng, hiện đại, thoáng mát,
+                        hệ thống trang thiết bị đạt chuẩn 5 sao, khu vực trang điểm hiện đại, khu vực nghe nhạc,
+                        quầy giải khát dinh dưỡng phục vụ nhu cầu thư giãn sẽ đem đến trải nghiệm du lịch tốt nhất.
+                    </p>
+                    <h5>Giá dao động: 200000 - 600000 VND</h5>
+                </div>
+            </div>
+            <img class="w-50" src="~/Assets/Client/gym.jpg" />
+        </div>
+    </div>
+
+    <div class="home-body-container my-5" style="margin-bottom: 20rem">
+        <div class="m-4 text-center">
+            <h2>Nổi Bật Nhất</h2>
+            @Html.ActionLink("Xem Thêm", "DSPhong", "DatPhong", null, new { @class = "btn btn-warning mt-3", @style = "text-decoration: none" })
+            <div class="row d-flex flex-row justify-content-between" style="margin-top: 1em">
+                @foreach (var item in Model)
+                {<div class="card shadow-sm m-3" style="width: 30%">
+                        <div class="card-img-top">
+                            <img class="img-fluid rounded mx-auto d-block" src="~/Assets/Client/@Html.DisplayFor(modelItem => item.avatar_p)" alt="Responsive image" />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="blockquote"> @Html.DisplayFor(modelItem => item.tenphong)</h5>
+                            <p class="blockquote-footer mt-2">
+                                @Html.DisplayFor(modelItem => item.loaiphong.mota_p)
+                            </p>
+                            <h5 class="text-end"> @Html.DisplayFor(modelItem => item.loaiphong.giaphong) VND</h5>
+                        </div>
+                        <div class="text-center mb-4">
+                            @Html.ActionLink("Xem chi tiết", "DatPhong", "DatPhong", new { ID = item.ID_P }, new { @class = "btn btn-outline-dark" })
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="text-end">
+                <a class="text-decoration-none text-dark my-3">@Html.ActionLink("Xem Thêm", "DSPhong", "DatPhong", null, new { @style = "text-decoration: none", @class="text-dark fw-bold" })<i class="fa-solid fa-arrow-right-long" style="margin-left: .5em"></i></a>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col bg-image p-5 text-center shadow-sm rounded text-white"
+                 style="background-image: url('/Assets/Client/hotel-wall.jpg');">
+                <div class="h-100 p-3 rounded-3 bg-dark bg-opacity-25">
+                    <h1 class="mb-3 h2">Phòng đơn</h1>
+                    <p class="text-justify">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
+                        labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
+                    </p>
+                    @Html.ActionLink("Xem Chi tiết", "PhongDon", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+                </div>
+            </div>
+            <div class="col bg-image p-5 text-center shadow-sm rounded text-white"
+                 style="background-image: url('/Assets/Client/hotel-bg-2.jpg');">
+                <div class="h-100 p-3 rounded-3 bg-dark bg-opacity-25">
+                    <h1 class="mb-3 h2">Phòng đôi</h1>
+                    <p class="text-justify">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
+                        labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
+                    </p>
+                    @Html.ActionLink("Xem Chi tiết", "PhongDoi", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col bg-image p-5 text-center shadow-sm rounded text-white"
+                 style="background-image: url('/Assets/Client/hotel-wall-4.jpg');">
+                <div class="h-100 p-3 rounded-3 bg-dark bg-opacity-25">
+                    <h1 class="mb-3 h2">Phòng ba</h1>
+                    <p class="text-justify">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
+                        labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
+                    </p>
+                    @Html.ActionLink("Xem Chi tiết", "PhongBa", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+
+                </div>
+            </div>
+            <div class="col bg-image p-5 text-center shadow-sm rounded text-white"
+                 style="background-image: url('/Assets/Client/hotel-wall-3.jpg');">
+                <div class="h-100 p-3 rounded-3 bg-dark bg-opacity-25">
+                    <h1 class="mb-3 h2">Phòng cao cấp</h1>
+                    <p class="text-justify">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
+                        labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
+                    </p>
+                    @Html.ActionLink("Xem Chi tiết", "PhongCaoCap", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 px-4">
+            <h3 class="fw-bold">Vị trí toạ lạc</h3>
+            <span class="text-sm-start">Các điểm đến lí tưởng xung quanh khách sạn</span>
+        </div>
+        <div class="row my-4 p-4 justify-content-sm-between">
+            <div class="col" id="what-nearby">
+                <div class="row">
+                    <h5>Gần đây</h5>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Công viên Hoàng Văn Thụ
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        550 m
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Công viên Gia Định
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        1.1 km
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Công viên Bàu cát
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        3.1 km
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Công viên Nguyễn Sỹ Sách
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        3.5 km
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Đài tưởng niệm
+                    </div>4
+                    <div class="col-4 text-secondary text-end">
+                        3.5 km
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Công viên Lê Văn Tám
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        3.8 km
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Khu Du lịch Kỳ Hoà
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        4 km
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="restaurant-and-cafe-nearby">
+                <div id="restaurant-nearby">
+                    <div class="row">
+                        <h5>Nhà hàng</h5>
+                    </div>
+                    <div class="row my-2 justify-content-between">
+                        <div class="col-8">
+                            Nhà hàng Papa's Chicken
+                        </div>
+                        <div class="col-4 text-secondary text-end">
+                            200 m
+                        </div>
+                        <div class="mt-3 mb-1 border-bottom"></div>
+                    </div>
+                    <div class="row my-2 justify-content-between">
+                        <div class="col-8">
+                            Nhà hàng Al Fresco
+                        </div>
+                        <div class="col-4 text-secondary text-end">
+                            200 m
+                        </div>
+                        <div class="mt-3 mb-1 border-bottom"></div>
+                    </div>
+                    <div class="row my-2 justify-content-between">
+                        <div class="col-8">
+                            Nhà hàng ISushi Trường Sơn
+                        </div>
+                        <div class="col-4 text-secondary text-end">
+                            300 m
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5" id="cafe-nearby">
+                    <div class="row">
+                        <h5>Cà phê</h5>
+                    </div>
+                    <div class="row my-2 justify-content-between">
+                        <div class="col-8">
+                            Cà phê The Bush
+                        </div>
+                        <div class="col-4 text-secondary text-end">
+                            100 m
+                        </div>
+                        <div class="mt-3 mb-1 border-bottom"></div>
+                    </div>
+                    <div class="row my-2 justify-content-between">
+                        <div class="col-8">
+                            Cà phê Robica Coffee
+                        </div>
+                        <div class="col-4 text-secondary text-end">
+                            200 m
+                        </div>
+                        <div class="mt-3 mb-1 border-bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="airport-nearby">
+                <div class="row">
+                    <h5>Sân bay</h5>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Sân bay Tân Sơn Nhất
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        1.6 km
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+                <div class="row my-2 justify-content-between">
+                    <div class="col-8">
+                        Sân bay Vũng Tàu
+                    </div>
+                    <div class="col-4 text-secondary text-end">
+                        67 km
+                    </div>
+                    <div class="mt-3 mb-1 border-bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

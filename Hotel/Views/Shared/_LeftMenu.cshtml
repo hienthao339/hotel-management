@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "_LeftMenu";
+}
+<style>
+    .nav-item{
+        font-size: 18px;
+        padding: 1rem;
+    }
+</style>
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="container">
+        <div class="navbar-header text-light">
+            <div class="nav-item">
+                @Html.ActionLink("Đặt phòng", "DSDatPhong", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Phòng", "DSPhong", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Loại Phòng", "DSLoaiPhong", "Admin", null, new { @style = "color: #ffffff; text-decoration: none " })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Hóa đơn", "DSHoaDon", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Dịch vụ", "DSDichVu", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Chi tiết dịch vụ", "DSCTDV", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Phụ thu", "DSPhuThu", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Chi tiết phụ thu", "DSCTPT", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+            <div class="nav-item">
+                @Html.ActionLink("Người dùng", "DSTaiKhoan", "Admin", null, new { @style = "color: #ffffff; text-decoration: none" })
+            </div>
+        </div>
+        </div>
+</nav>
+

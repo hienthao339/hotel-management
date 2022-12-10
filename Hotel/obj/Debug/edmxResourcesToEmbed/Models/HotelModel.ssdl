@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBHotelContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTietDichVu">
+    <Key>
+      <PropertyRef Name="ID_CTDV" />
+    </Key>
+    <Property Name="ID_CTDV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_HD" Type="int" />
+    <Property Name="ID_DV" Type="int" />
+  </EntityType>
+  <EntityType Name="ChiTietPhuThu">
+    <Key>
+      <PropertyRef Name="ID_CTPT" />
+    </Key>
+    <Property Name="ID_CTPT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_HD" Type="int" />
+    <Property Name="ID_PT" Type="int" />
+  </EntityType>
+  <EntityType Name="datphong">
+    <Key>
+      <PropertyRef Name="ID_DP" />
+    </Key>
+    <Property Name="ID_DP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_P" Type="int" />
+    <Property Name="ID_ND" Type="int" />
+    <Property Name="ngayden" Type="date" />
+    <Property Name="ngaydi" Type="date" />
+    <Property Name="tongtien" Type="int" />
+    <Property Name="ngaydat" Type="date" />
+  </EntityType>
+  <EntityType Name="dichvu">
+    <Key>
+      <PropertyRef Name="ID_DV" />
+    </Key>
+    <Property Name="ID_DV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tendv" Type="nvarchar" MaxLength="50" />
+    <Property Name="giadv" Type="int" />
+  </EntityType>
+  <EntityType Name="hoadon">
+    <Key>
+      <PropertyRef Name="ID_HD" />
+    </Key>
+    <Property Name="ID_HD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DP" Type="int" />
+    <Property Name="phuongthucthanhtoan" Type="nvarchar" MaxLength="20" />
+    <Property Name="trangthaihd" Type="nvarchar" MaxLength="20" />
+    <Property Name="tongtien" Type="int" />
+  </EntityType>
+  <EntityType Name="loainguoidung">
+    <Key>
+      <PropertyRef Name="ID_LND" />
+    </Key>
+    <Property Name="ID_LND" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loainguoidung" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="loaiphong">
+    <Key>
+      <PropertyRef Name="ID_LP" />
+    </Key>
+    <Property Name="ID_LP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenlp" Type="nvarchar" MaxLength="50" />
+    <Property Name="giaphong" Type="int" />
+    <Property Name="mota_p" Type="nvarchar" MaxLength="3000" />
+  </EntityType>
+  <EntityType Name="nguoidung">
+    <Key>
+      <PropertyRef Name="ID_ND" />
+    </Key>
+    <Property Name="ID_ND" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tendn" Type="varchar" MaxLength="50" />
+    <Property Name="matkhau" Type="varchar" MaxLength="50" />
+    <Property Name="ID_LND" Type="int" />
+    <Property Name="hoten" Type="nvarchar" MaxLength="50" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="100" />
+    <Property Name="sdt" Type="char" MaxLength="12" />
+    <Property Name="email" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="phong">
+    <Key>
+      <PropertyRef Name="ID_P" />
+    </Key>
+    <Property Name="ID_P" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_LP" Type="int" />
+    <Property Name="tenphong" Type="nvarchar" MaxLength="50" />
+    <Property Name="trangthai" Type="nvarchar" MaxLength="50" />
+    <Property Name="tang" Type="int" />
+    <Property Name="avatar_p" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="phuthu">
+    <Key>
+      <PropertyRef Name="ID_PT" />
+    </Key>
+    <Property Name="ID_PT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenpt" Type="nvarchar" MaxLength="50" />
+    <Property Name="giapt" Type="int" />
+  </EntityType>
+  <EntityType Name="the">
+    <Key>
+      <PropertyRef Name="ID_THE" />
+    </Key>
+    <Property Name="ID_THE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ND" Type="int" />
+    <Property Name="sothe" Type="char" MaxLength="10" />
+  </EntityType>
+  <Association Name="PK_CTDV_DV_FK">
+    <End Role="dichvu" Type="Self.dichvu" Multiplicity="0..1" />
+    <End Role="ChiTietDichVu" Type="Self.ChiTietDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dichvu">
+        <PropertyRef Name="ID_DV" />
+      </Principal>
+      <Dependent Role="ChiTietDichVu">
+        <PropertyRef Name="ID_DV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CTDV_HD_FK">
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="0..1" />
+    <End Role="ChiTietDichVu" Type="Self.ChiTietDichVu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hoadon">
+        <PropertyRef Name="ID_HD" />
+      </Principal>
+      <Dependent Role="ChiTietDichVu">
+        <PropertyRef Name="ID_HD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CTPT_HD_FK">
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="0..1" />
+    <End Role="ChiTietPhuThu" Type="Self.ChiTietPhuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hoadon">
+        <PropertyRef Name="ID_HD" />
+      </Principal>
+      <Dependent Role="ChiTietPhuThu">
+        <PropertyRef Name="ID_HD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_CTPT_PT_FK">
+    <End Role="phuthu" Type="Self.phuthu" Multiplicity="0..1" />
+    <End Role="ChiTietPhuThu" Type="Self.ChiTietPhuThu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phuthu">
+        <PropertyRef Name="ID_PT" />
+      </Principal>
+      <Dependent Role="ChiTietPhuThu">
+        <PropertyRef Name="ID_PT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_DP_ID_ND_FK">
+    <End Role="nguoidung" Type="Self.nguoidung" Multiplicity="0..1" />
+    <End Role="datphong" Type="Self.datphong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoidung">
+        <PropertyRef Name="ID_ND" />
+      </Principal>
+      <Dependent Role="datphong">
+        <PropertyRef Name="ID_ND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_ID_DP_FK">
+    <End Role="datphong" Type="Self.datphong" Multiplicity="0..1" />
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="datphong">
+        <PropertyRef Name="ID_DP" />
+      </Principal>
+      <Dependent Role="hoadon">
+        <PropertyRef Name="ID_DP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_ID_LND_FK">
+    <End Role="loainguoidung" Type="Self.loainguoidung" Multiplicity="0..1" />
+    <End Role="nguoidung" Type="Self.nguoidung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loainguoidung">
+        <PropertyRef Name="ID_LND" />
+      </Principal>
+      <Dependent Role="nguoidung">
+        <PropertyRef Name="ID_LND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_ID_LP_FK">
+    <End Role="loaiphong" Type="Self.loaiphong" Multiplicity="0..1" />
+    <End Role="phong" Type="Self.phong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaiphong">
+        <PropertyRef Name="ID_LP" />
+      </Principal>
+      <Dependent Role="phong">
+        <PropertyRef Name="ID_LP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_ID_ND_FK">
+    <End Role="nguoidung" Type="Self.nguoidung" Multiplicity="0..1" />
+    <End Role="the" Type="Self.the" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nguoidung">
+        <PropertyRef Name="ID_ND" />
+      </Principal>
+      <Dependent Role="the">
+        <PropertyRef Name="ID_ND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_ID_P_FK">
+    <End Role="phong" Type="Self.phong" Multiplicity="0..1" />
+    <End Role="datphong" Type="Self.datphong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phong">
+        <PropertyRef Name="ID_P" />
+      </Principal>
+      <Dependent Role="datphong">
+        <PropertyRef Name="ID_P" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBHotelContextModelStoreContainer">
+    <EntitySet Name="ChiTietDichVu" EntityType="Self.ChiTietDichVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTietPhuThu" EntityType="Self.ChiTietPhuThu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="datphong" EntityType="Self.datphong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="dichvu" EntityType="Self.dichvu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hoadon" EntityType="Self.hoadon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loainguoidung" EntityType="Self.loainguoidung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loaiphong" EntityType="Self.loaiphong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nguoidung" EntityType="Self.nguoidung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phong" EntityType="Self.phong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phuthu" EntityType="Self.phuthu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="the" EntityType="Self.the" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="PK_CTDV_DV_FK" Association="Self.PK_CTDV_DV_FK">
+      <End Role="dichvu" EntitySet="dichvu" />
+      <End Role="ChiTietDichVu" EntitySet="ChiTietDichVu" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CTDV_HD_FK" Association="Self.PK_CTDV_HD_FK">
+      <End Role="hoadon" EntitySet="hoadon" />
+      <End Role="ChiTietDichVu" EntitySet="ChiTietDichVu" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CTPT_HD_FK" Association="Self.PK_CTPT_HD_FK">
+      <End Role="hoadon" EntitySet="hoadon" />
+      <End Role="ChiTietPhuThu" EntitySet="ChiTietPhuThu" />
+    </AssociationSet>
+    <AssociationSet Name="PK_CTPT_PT_FK" Association="Self.PK_CTPT_PT_FK">
+      <End Role="phuthu" EntitySet="phuthu" />
+      <End Role="ChiTietPhuThu" EntitySet="ChiTietPhuThu" />
+    </AssociationSet>
+    <AssociationSet Name="PK_DP_ID_ND_FK" Association="Self.PK_DP_ID_ND_FK">
+      <End Role="nguoidung" EntitySet="nguoidung" />
+      <End Role="datphong" EntitySet="datphong" />
+    </AssociationSet>
+    <AssociationSet Name="PK_ID_DP_FK" Association="Self.PK_ID_DP_FK">
+      <End Role="datphong" EntitySet="datphong" />
+      <End Role="hoadon" EntitySet="hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="PK_ID_LND_FK" Association="Self.PK_ID_LND_FK">
+      <End Role="loainguoidung" EntitySet="loainguoidung" />
+      <End Role="nguoidung" EntitySet="nguoidung" />
+    </AssociationSet>
+    <AssociationSet Name="PK_ID_LP_FK" Association="Self.PK_ID_LP_FK">
+      <End Role="loaiphong" EntitySet="loaiphong" />
+      <End Role="phong" EntitySet="phong" />
+    </AssociationSet>
+    <AssociationSet Name="PK_ID_ND_FK" Association="Self.PK_ID_ND_FK">
+      <End Role="nguoidung" EntitySet="nguoidung" />
+      <End Role="the" EntitySet="the" />
+    </AssociationSet>
+    <AssociationSet Name="PK_ID_P_FK" Association="Self.PK_ID_P_FK">
+      <End Role="phong" EntitySet="phong" />
+      <End Role="datphong" EntitySet="datphong" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

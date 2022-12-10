@@ -1,0 +1,50 @@
+﻿@model PagedList.IPagedList<Hotel.Models.phuthu>
+@{
+    ViewBag.Title = "DSPhuThu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList;
+@using PagedList.Mvc;
+<main>
+    <form style="margin:20px">
+        <fieldset disabled><h3>PHụ thu</h3></fieldset>
+        <div class="d-flex flex-row justify-content-between">
+            <div>
+                @Html.ActionLink("Thêm mới", "Create", "ThemPhuThu", new { area = "Admin" }, new { @class = "btn btn-primary btn-lg mb-4 mt-3" })
+            </div>
+        </div>
+        <table class="table m-3">
+            <tr>
+                <th>
+                    Tên phụ thu
+                </th>
+                <th>
+                    Giá phụ thu
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tenpt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.giapt)
+                    </td>
+                    <td class="d-flex flex-column">
+                        @Html.ActionLink("Sửa", "SuaPhuThu", new { ID = item.ID_PT }, new { @type = "button", @style = "padding: 10px ; width: 100px", @class = "btn btn-warning btn-sm" })
+                        @Html.ActionLink("Xóa", "Delete", new { ID = item.ID_PT }, new { @type = "button", @style = "padding: 10px ; width: 100px ", @class = "btn btn-danger btn-sm", @OnClick = "return confirm('Bạn có chắc sẽ xóa" + @Html.DisplayFor(modelItem => item.tenpt) + "  này không ?');" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </form>
+</main>
+<br />
+<div id='Paging' style="text-align: center">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("DSPhuThu", new { page }))
+</div>

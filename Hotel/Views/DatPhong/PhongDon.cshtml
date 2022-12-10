@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "PhongDon";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+}
+
+@model List<QLKhachSan.Context.ViewModels.phongview>
+<main>
+    <div class="m-4">
+        <ul class="w-50 navbar-nav d-flex flex-row justify-content-around fw-light fs-5 mb-2">
+            @Html.ActionLink("Tất cả", "DSPhong", "DatPhong", new { @style = "color: #2d3436; text-decoration: none" })
+            @Html.ActionLink("Phòng đơn", "PhongDon", "DatPhong", new { @class = "fw-bold text-dark text-decoration-none" })
+            @Html.ActionLink("Phòng đôi", "PhongDoi", "DatPhong", new { @style = "color: #636e72; text-decoration: none" })
+            @Html.ActionLink("Phòng ba", "PhongBa", "DatPhong", null, new { @style = "color: #636e72; text-decoration: none" })
+            @Html.ActionLink("Phòng cao cấp", "PhongCaoCap", "DatPhong", new {@style = "color: #636e72; text-decoration: none" })
+        </ul>
+
+        <div class="row d-flex flex-row justify-content-start" style="margin-top: 1em">
+            @foreach (QLKhachSan.Context.ViewModels.phongview pv in @Model)
+            {
+                if (pv.ID_LP == 1)
+                {
+
+                    <div class="card shadow-sm m-3" style="width: 30%">
+                        <div class="card-img-top">
+                            <img class="img-fluid rounded mx-auto d-block" src="~/Assets/Client/@pv.avatar_p" alt="Responsive image" />
+                        </div>
+                        <div class="card-body">
+                            <h5 class="blockquote">@pv.tenphong</h5>
+                            <p class="blockquote-footer mt-2">
+                                @pv.mota_p
+                            </p>
+                            <h5 class="text-end">@pv.giaphong VND</h5>
+                        </div>
+                        <div class="text-center mb-4">
+                            @Html.ActionLink("Xem chi tiết", "DatPhong", "DatPhong", new { ID = pv.ID_P }, new { @class = "btn btn-outline-dark" })
+                        </div>
+                    </div>}
+            }
+        </div>
+    </div>
+</main>

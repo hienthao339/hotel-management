@@ -1,0 +1,66 @@
+﻿@model Hotel.Models.nguoidung
+@{
+    ViewBag.Title = "DangKyThanhCong";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link href="~/Assets/Admin/css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+    <div class="bg-image shadow-sm"
+         style="background-image: url('/Assets/Client/hotel-wall-2a.jpg');">
+        <div class="bg-dark bg-opacity-50 text-light p-5 d-flex flex-row">
+            <div class="container-fluid w-50 my-5 fs-5" style="margin: 2rem 7rem">
+                <div class="d-flex flex-row mb-3">
+                    <div class="text-capitalize fs-1 fw-bolder">
+
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                    <div>
+                        <b>Tên người dùng: </b><span>@Html.DisplayFor(model => model.hoten)</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div>
+                        <b>Tên đăng nhập: </b><span>@Html.DisplayFor(model => model.tendn)</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div>
+                        <b>Mật khẩu: </b><span>@Html.DisplayFor(model => model.matkhau)</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div>
+                        <b>Email: </b><span>@Html.DisplayFor(model => model.email)</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div>
+                        <b>SDT: </b><span>@Html.DisplayFor(model => model.sdt)</span>
+                    </div>
+                </div>
+                <div class="d-flex flex-row">
+                    <div>
+                        <b>Địa chỉ: </b><span>@Html.DisplayFor(model => model.diachi)</span>
+                    </div>
+                </div>
+                @Html.ActionLink("Đăng nhập", "DangNhap", new { area = "CaNhan" },new { @class= "p-3 mt-3 btn btn-light" })
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model  PagedList.IPagedList<Hotel.Models.ChiTietPhuThu>
+
+@{
+    ViewBag.Title = "DSCTPT";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using PagedList;
+@using PagedList.Mvc;
+<form style="margin:20px">
+    <fieldset disabled><h3>Chi tiết phụ thu</h3></fieldset>
+    <div class="d-flex flex-row justify-content-between">
+        <div>
+            @Html.ActionLink("Thêm mới", "ThemCTPT", "Admin", new { area = "Admin" }, new { @class = "btn btn-primary btn-lg mb-4 mt-3" })
+        </div>
+    </div>
+    <table class="table m-3">
+        <tr>
+            <th>
+                Mã hoá đơn
+            </th>
+            <th>
+                Mã phụ thu
+            </th>
+            <th>
+                Giá phụ thu
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_HD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_PT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phuthu.giapt)
+                </td>
+                <td>
+                    @Html.ActionLink("Xóa", "XoaCTPT", new { ID = item.ID_CTPT }, new { @type = "button", @style = "padding: 10px ; width: 100px ", @class = "btn btn-danger btn-sm", @OnClick = "return confirm('Bạn có chắc sẽ xóa" + @Html.DisplayFor(modelItem => item.phuthu.tenpt) + "  này không ?');" })
+                </td>
+            </tr>
+        }
+    </table>
+</form>
+<div id='Paging' style="text-align: center">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("DSCTPT", new { page }))
+</div>

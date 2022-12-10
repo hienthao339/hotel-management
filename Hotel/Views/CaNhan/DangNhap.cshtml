@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared2/_Layout.cshtml";
+}
+@model Hotel.Models.ViewModels.dangnhapView
+
+@using (Html.BeginForm())
+{
+    <main class="d-flex flex-row">
+        @Html.AntiForgeryToken()
+        <img class="img-fluid col-6" src="~/Assets/Client/hotel-bg.jpg" />
+        <div class="col-6 fw-bold fs-5" style="padding:4em 7em">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row my-3">
+                <span class="mb-2">Tên đăng nhập</span>
+                @*<input id="login-name" type="text" required placeholder="Nhập tên đăng nhập"
+                    style="padding:1rem" />*@
+                @Html.EditorFor(model => model.tendn, new { htmlAttributes = new { @id = "login-name", @type = "text", @style = "padding:1rem", @placeholder = "Nhập tên đăng nhập", @required = "Nhập tài khoản" } })
+                @Html.ValidationMessageFor(model => model.tendn, "", new { @class = "text-danger" })
+
+            </div>
+            <div class="row mb-3">
+                <span class="mb-2">Mật khẩu</span>
+                @*<input id="login-pass" type="text" required placeholder="Nhập mật khẩu"
+        style="padding:1rem" />*@
+                @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @id = "login-name", @type = "password", @style = "padding:1rem", @placeholder = "Nhập tên đăng nhập", @required = "Nhập mật khẩu" } })
+                @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.ID_LND, new { htmlAttributes = new { @style = "display: none", @Value = "1" } })
+            <div class="form-check">
+                @Html.CheckBoxFor(m => m.TuDongDangNhap, new { @class = "checkbox" })
+                <label class="form-check-label fw-light" for="rem-pass">Tự Động Đăng Nhập</label>
+            </div>
+                <div class="row mt-4">
+                    <button class="py-3 w-100 btn-dark border-0 fs-5">Đăng nhập</button>
+                </div>
+                <div class="row text-center my-5">
+                    <span class="mb-3 fw-normal">Bạn chưa có tài khoản?</span>  @Html.ActionLink("Đăng ký", "dangky", null, new { @style = "text-decoration:none" })
+                </div>
+            </div>
+        </div>
+    </main>
+}

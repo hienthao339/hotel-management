@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<Hotel.Models.datphong>
+
+
+@{
+    ViewBag.Title = "DSDatPhong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+<main>
+    <form style="margin:20px">
+        <fieldset disabled><h3>Đặt phòng</h3></fieldset>
+        @*<div class="d-flex flex-row justify-content-between">
+            <div>
+                @Html.ActionLink("Thêm mới", "ThemDatPhong", "Admin", null, new { @class = "btn btn-primary btn-lg mb-4 mt-3" })
+            </div>
+        </div>*@
+        <table class="table m-3">
+
+            <thead>
+                <tr>
+
+                    <th scope="col">ID đặt phòng</th>
+                    <th scope="col">Tên phòng</th>
+                    <th scope="col">Tên người dùng</th>
+                    <th scope="col">Ngày đến</th>
+                    <th scope="col">Ngày đi</th>
+                    <th scope="col">Ngày đặt</th>
+                    <th scope="col">Tổng tiền</th>
+
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_DP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phong.tenphong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nguoidung.hoten)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngayden)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaydi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ngaydat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tongtien)
+                    </td>
+                    <td class="d-flex flex-column">
+                        @*@Html.ActionLink("Sửa", "SuaDatPhong", new { ID = item.ID_DP }, new { @type = "button", @style = "padding: 10px ; width: 100px", @class = "btn btn-warning btn-sm" })*@
+                        @Html.ActionLink("Xóa", "XoaDatPhong", new { ID = item.ID_DP }, new { @type = "button", @style = "padding: 10px ; width: 100px ", @class = "btn btn-danger btn-sm", @OnClick = "return confirm('Bạn có chắc sẽ xóa " + @Html.DisplayFor(modelItem => item.ID_DP) + " này không ?');" })
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+    </form>
+</main>
+<br />
+
+
+<div id='Paging' style="text-align: center">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("DSDatPhong", new { page }))
+</div>
