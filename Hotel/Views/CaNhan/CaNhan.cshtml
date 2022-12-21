@@ -7,63 +7,37 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <link href="~/Assets/Admin/css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="bg-light">
+    <body>
         <div class="bg-image shadow-sm"
-             style="background-image: url('/Assets/Client/hotel-bg-1.jpg');">
+             style="background-image: url('/Assets/Client/bar.jpg')">
             <div class="bg-dark bg-opacity-50 text-light p-5 d-flex flex-row">
 
                 <div class="w-25 d-flex flex-column">
-                    @Html.ActionLink("Sửa hồ sơ", "SuaCaNhan", new { ID = ((Hotel.Models.nguoidung)Session["tendn"]).ID_ND }, new { @class = "p-3 mt-3 btn btn-outline-light" })
-                    @Html.ActionLink("Lịch sử đặt phòng", "LichSu", "CaNhan", new { @class = "p-3 mt-3 btn btn-outline-light" })
+                    @Html.ActionLink("Lịch sử đặt phòng", "LichSu", "CaNhan", new { @class = "p-3 mt-3 btn btn-outline-light", @style = "margin-right: .5em" })
+                    @Html.ActionLink("Hóa đơn", null, null, new { @class = "p-3 mt-3 btn btn-outline-light", @style = "margin-right: .5em" })
+                    @Html.ActionLink("Sửa hồ sơ", "SuaCaNhan", new { ID = ((Hotel.Models.nguoidung)Session["tendn"]).ID_ND }, new { @class = "p-3 mt-3 btn btn-outline-light", @style = "margin-right: .5em" })
                 </div>
-                <div class="container-fluid w-50">
-                    <div class="d-flex flex-row mb-3">
-                        <div class="w-50 d-flex flex-column" style="margin-right: .5em">
-                            <span class="mb-2 d-flex flex-column">Họ tên</span>
-                            @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @type = "text", @style = " background: none; border-radius: 40px; border: #ffffff 1px solid", @placeholder = "Nhập họ tên người dùng", @class = "bg-opacity: 0.5; px-4 py-3 text-light"} })
-                            @Html.ValidationMessageFor(model => model.hoten, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="w-50 d-flex flex-column">
-                            <span class="mb-2">Mật khẩu</span>
-                            @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @type = "text", @style = " background: none; border-radius: 40px;border: #ffffff 1px solid", @placeholder = "Nhập mật khẩu người dùng", @class = "bg-opacity: 0.5; px-4 py-3 text-light" } })
-                            @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
-                        </div>
+                <div class="px-5 W-50 row">
+                    <div class="w-50">
+                        <div class="row fs-4 fw-bold">Họ tên</div>
+                        <div class="row">@Html.DisplayFor(s => s.hoten) </div>
+                        <div class="row fs-4 fw-bold mt-4">Mật khẩu</div>
+                        <div class="row">@Html.DisplayFor(s => s.matkhau) </div>
                     </div>
-                    <div class="d-flex flex-row mb-3">
-                        <div class="w-50 d-flex flex-column" style="margin-right: .5em">
-                            <span class="mb-2">Số điện thoại</span>
-                            @Html.EditorFor(model => model.sdt, new { htmlAttributes = new { @type = "text", @style = " background: none; border-radius: 40px;border: #ffffff 1px solid", @placeholder = "Nhập điện thoại người dùng", @class = "bg-opacity: 0.5; px-4 py-3 text-light" } })
-                            @Html.ValidationMessageFor(model => model.sdt, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="w-50 d-flex flex-column">
-                            <span class="mb-2">Email</span>
-                            @Html.EditorFor(model => model.email, new { htmlAttributes = new { @type = "text", @style = " background: none; border-radius: 40px;border: #ffffff 1px solid", @placeholder = "Nhập email người dùng", @class = "bg-opacity: 0.5; px-4 py-3 text-light" } })
-                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-                        </div>
+                    <div class="w-50">
+                        <div class="row fs-4 fw-bold">Điện thoại</div>
+                        <div class="row">@Html.DisplayFor(s => s.sdt) </div>
+                        <div class="row fs-4 fw-bold mt-4">Email</div>
+                        <div class="row">@Html.DisplayFor(s => s.email) </div>
                     </div>
-                    <div class="w-50 d-flex flex-column">
-                        <span class="mb-2">Địa chỉ</span>
-                        @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @type = "text", @style = " background: none; border-radius: 40px;border: #ffffff 1px solid", @placeholder = "Nhập địa chỉ người dùng", @class = "bg-opacity: 0.5; px-4 py-3 text-light" } })
-                        @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+                    <div>
+                        <div class="row fs-4 fw-bold">Địa chỉ</div>
+                        <div class="row">@Html.DisplayFor(s => s.diachi) </div>
                     </div>
-                    
-
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </body>
-</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 }

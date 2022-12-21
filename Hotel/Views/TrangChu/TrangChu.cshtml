@@ -154,7 +154,8 @@
             @Html.ActionLink("Xem Thêm", "DSPhong", "DatPhong", null, new { @class = "btn btn-warning mt-3", @style = "text-decoration: none" })
             <div class="row d-flex flex-row justify-content-between" style="margin-top: 1em">
                 @foreach (var item in Model)
-                {<div class="card shadow-sm m-3" style="width: 30%">
+                {
+                    <div class="card shadow-sm m-3" style="width: 30%">
                         <div class="card-img-top">
                             <img class="img-fluid rounded mx-auto d-block" src="~/Assets/Client/@Html.DisplayFor(modelItem => item.avatar_p)" alt="Responsive image" />
                         </div>
@@ -184,7 +185,7 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
                         labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
                     </p>
-                    @Html.ActionLink("Xem Chi tiết", "PhongDon", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+                    @Html.ActionLink("Xem Chi tiết", "PhongDon", "DatPhong", null, new { @class = "btn btn-outline-light mt-3 text-decoration-none" })
                 </div>
             </div>
             <div class="col bg-image p-5 text-center shadow-sm rounded text-white"
@@ -195,7 +196,7 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
                         labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
                     </p>
-                    @Html.ActionLink("Xem Chi tiết", "PhongDoi", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+                    @Html.ActionLink("Xem Chi tiết", "PhongDoi", "DatPhong", null, new { @class = "btn btn-outline-light mt-3 text-decoration-none"})
 
                 </div>
             </div>
@@ -209,7 +210,7 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
                         labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
                     </p>
-                    @Html.ActionLink("Xem Chi tiết", "PhongBa", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+                    @Html.ActionLink("Xem Chi tiết", "PhongBa", "DatPhong", null, new { @class = "btn btn-outline-light mt-3 text-decoration-none"})
 
                 </div>
             </div>
@@ -221,7 +222,7 @@
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus praesentium
                         labore accusamus sequi, voluptate debitis tenetur in deleniti possimus modi voluptatum.
                     </p>
-                    @Html.ActionLink("Xem Chi tiết", "PhongCaoCap", "DatPhong", null, new { @class = "btn btn-outline-light mt-3", @style = "color: #636e72; text-decoration: none" })
+                    @Html.ActionLink("Xem Chi tiết", "PhongCaoCap", "DatPhong", null, new { @class = "btn btn-outline-light mt-3 text-decoration-none"})
 
                 </div>
             </div>

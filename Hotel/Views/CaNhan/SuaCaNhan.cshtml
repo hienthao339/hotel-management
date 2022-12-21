@@ -6,44 +6,68 @@
     Hotel.Models.DBHotelContextEntities dba = new Hotel.Models.DBHotelContextEntities();
 }
 
-<div class="p-5" style="background-image: url(/Assets/Client/hotel-bg-1.jpg)">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.ID_ND)
-    <div class="container-fluid w-50">
-        <div class="d-flex flex-row mb-3">
-            <div class="w-50 d-flex flex-column" style="margin-right: .5em">
-                <span class="mb-2 fw-bold">Họ tên</span>
-                @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @type = "text", @style = ";border-radius: 40px;", @placeholder = "Nhập họ tên người dùng", @class = "bg-opacity: 0.5; px-4 py-3" } })
-                @Html.ValidationMessageFor(model => model.hoten, "", new { @class = "text-danger" })
-            </div>
-            <div class="w-50 d-flex flex-column">
-                <span class="mb-2 fw-bold">Mật khẩu</span>
-                @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @type = "text", @style = ";border-radius: 40px;", @placeholder = "Nhập mật khẩu người dùng", @class = "bg-opacity: 0.5; px-4 py-3" } })
-                @Html.ValidationMessageFor(model => model.matkhau, "", new { @class = "text-danger" })
+    <div style="margin: 20px">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_ND)
+
+        <div class="form-group mt-2">
+            <h5>Tên đăng nhập</h5>
+            <div class="my-2">
+                @Html.EditorFor(model => model.tendn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tendn, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="d-flex flex-row mb-3">
-            <div class="w-50 d-flex flex-column" style="margin-right: .5em">
-                <span class="mb-2 fw-bold">Số điện thoại</span>
-                @Html.EditorFor(model => model.sdt, new { htmlAttributes = new { @type = "text", @style = ";border-radius: 40px;", @placeholder = "Nhập điện thoại người dùng", @class = "bg-opacity: 0.5; px-4 py-3" } })
+
+        <div class="form-group mt-2">
+            <h5>Mật khẩu</h5>
+            <div class="my-2">
+                @Html.EditorFor(model => model.matkhau, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tendn, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <h5>Họ tên</h5>
+            <div class="my-2">
+                @Html.EditorFor(model => model.hoten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.hoten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <h5>Số điện thoại</h5>
+            <div class="my-2">
+                @Html.EditorFor(model => model.sdt, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.sdt, "", new { @class = "text-danger" })
             </div>
-            <div class="w-50 d-flex flex-column">
-                <span class="mb-2 fw-bold">Email</span>
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @type = "text", @style = ";border-radius: 40px;", @placeholder = "Nhập email người dùng", @class = "bg-opacity: 0.5; px-4 py-3" } })
+        </div>
+
+        <div class="form-group mt-2">
+            <h5>Địa chỉ</h5>
+            <div class="my-2">
+                @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mt-2">
+            <h5>Email</h5>
+            <div class="my-2">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="w-100 d-flex flex-column">
-            <span class="mb-2 fw-bold">Địa chỉ</span>
-            @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @type = "text", @style = ";border-radius: 40px;", @placeholder = "Nhập địa chỉ người dùng", @class = "bg-opacity: 0.5; px-4 py-3" } })
-            @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
-        </div>
+
         @Html.EditorFor(model => model.ID_LND, new { htmlAttributes = new { @style = "display: none", @Value = "1" } })
-    <div class="form-group my-4 d-flex flex-row">
-        @Html.ActionLink("Trở về danh sách", "CaNhan", "CaNhan", new { @type = "button", @style = "border-radius: 40px", @class = "btn btn-outline-dark btn-sm p-3 w-50 fw-bold" })
-        <input type="submit" value="Lưu" style="border-radius: 40px" class="btn btn-dark btn-sm p-3 w-50 fw-bold" />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" style="padding: 10px ; width: 100px ; margin-right: 10px" , class="btn btn-danger btn-sm " />
+                @Html.ActionLink("Trở về danh sách", "CaNhan", "CaNhan", new { @type = "button", @style = "padding: 10px ; margin-right: 10px", @class = "btn btn-dark btn-sm" })
+            </div>
+        </div>
     </div>
-    </div>
-</div>
+}
