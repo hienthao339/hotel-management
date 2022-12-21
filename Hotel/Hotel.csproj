@@ -200,6 +200,7 @@
     <Compile Include="Models\Functions\Func_nguoidung.cs" />
     <Compile Include="Models\Functions\Func_phong.cs" />
     <Compile Include="Models\Functions\Func_phuthu.cs" />
+    <Compile Include="Models\Functions\Func_ThongBao.cs" />
     <Compile Include="Models\hoadon.cs">
       <DependentUpon>HotelModel.tt</DependentUpon>
     </Compile>
@@ -243,6 +244,7 @@
     <Compile Include="Models\ViewModels\ctdvView.cs" />
     <Compile Include="Models\ViewModels\lichsuView.cs" />
     <Compile Include="Models\ViewModels\phongview.cs" />
+    <Compile Include="Models\ViewModels\ThongBaoView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
