@@ -26,6 +26,7 @@
         <AssociationConnector Association="DBHotelContextModel.PK_ID_LND_FK" ManuallyRouted="false" />
         <AssociationConnector Association="DBHotelContextModel.PK_ID_LP_FK" ManuallyRouted="false" />
         <AssociationConnector Association="DBHotelContextModel.PK_ID_ND_FK" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBHotelContextModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
